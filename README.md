@@ -8,11 +8,11 @@ We use Wherescape Red to manage our scheduled ETL procedures, and fortunately it
 
 ## Setup
 
-1. [cloud.google.com]
+**1. [cloud.google.com]**
   * You will need to create an account (or use any gmail account), within which you will need a Project and a Dataset. 
   * I highly recommend creating a service account since this user will be granted access to google assets on potentially several machines (and schedulers). Likely more than one individual will also need to know the password for this account, and a service account means that the account is independent of a single individual. 
 
-2. [Google Cloud SDK](https://cloud.google.com/sdk/)
+**2. [Google Cloud SDK](https://cloud.google.com/sdk/)**
   * Every machine that runs the powershell script needs to have the SDK installed. 
   * Execute after downloading to install (choosing defaults), and authenticate using your service account. 
   * This step saves authenticated accounts on your machine. 
