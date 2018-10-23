@@ -8,7 +8,7 @@ We use Wherescape Red to manage our scheduled ETL procedures, and fortunately it
 
 ## Setup
 
-**1. [cloud.google.com]**
+**1. (cloud.google.com)**
   * You will need to create an account (or use any gmail account), within which you will need a Project and a Dataset. 
   * I highly recommend creating a service account since this user will be granted access to google assets on potentially several machines (and schedulers). Likely more than one individual will also need to know the password for this account, and a service account means that the account is independent of a single individual. 
 
@@ -21,11 +21,22 @@ We use Wherescape Red to manage our scheduled ETL procedures, and fortunately it
   * If you believe the module was installed, but powershell is not seeing it, run `$Env:PSMODULEPATH` to see where powershell is looking for installed modules. 
   * Note: I believe the modules are installed when you install the SDK, but I can't recall exactly. 
 
-3. Project Confirmation
+**3. Project Confirmation**
   * The SDK stores project configurations available to the machine. 
   * In your terminal run `gcloud init` to set your project preferences. 
+  * At this point in your setup you should be able to run a few commands in powershell to make sure you're configured. Both of the following should return some metadata: 
+```
+Get-BqDataset "[dataset_id]"
+Get-BqTable "[dataset_id]" -DatasetId "[table_id]" 
+```
+  * Get your dataset and table IDs are found in your google cloud interface.
+[PNG here]
 
+  * Note that up to this point you are only authenticated to query the metadata associated with your table, dataset, and project. 
 
-
+**4. Authentication to push/query data**
+  * Because google charges for data transmission (upload/download), they require an extra authentication request before you are able to run those specific commands. 
+  * -At (cloud.google.com) go to Console > Go to project settings > Service Accounts > Create Service Account
+  * 
 
 
