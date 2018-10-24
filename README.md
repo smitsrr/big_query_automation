@@ -37,29 +37,22 @@ Get-BqTable "[dataset_id]" -DatasetId "[table_id]"
 **4. Authentication keys to push/query data**
   * Because google charges for data transmission (upload/download), they require an extra authentication request before you are able to run those specific commands.
   * At [](cloud.google.com) go to Console > Go to project settings > Service Accounts > Create Service Account
-
-  * Name: succinct name for the purpose of this account (e.g., "warehouse upload") 
-
+  * Name: succinct name for the purpose of this account (e.g., "warehouse upload")
   * Description: you’ll thank yourself later if you make this descriptive
-
   * Permissions: > Choose Project > Editor (at least)
-
   * Grant users access to this service account (I skipped this step)
-
   * Create Key - Do this! This produces a JSON file with your credentials. Keep this in a shared, but secured location. This allows the bigQuery powershell module to edit your data, and perform operations that charge your account.
 
 **5. Set Environment Variable**
   * On all machines that will run the powershell scripts, you must have an environment variable that points to the JSON permissions file. Google SDK expects this variable to exist, and uses it to find your JSON authentication file. 
   * Always restart your system after setting environment variables!!
-
-  * Name: GOOGLE_APPLICATION_CREDENTIALS
-
-  * Value: path to the JSON permissions file (including the file name)
+    * Name: GOOGLE_APPLICATION_CREDENTIALS
+    * Value: path to the JSON permissions file (including the file name)
   * To make sure the environment variable is set, and available, in Powershell run `$env:GOOGLE_APPLICATION_CREDENTIALS`
 
 **6. Upload**
   * As long as you have created a BigQuery table, you should be able to upload data using powershell.
-  * Create a .csv file with the exact specifications (column names/data types) as what you declared in BigQuery. 
+  * Create a .csv file with the exact specifications (column names/data types) as what you declared in BigQuery.
   * Tell GoogleCloudBeta which table you want to alter: 
 ```
 $table = Get-BqTable "[TABLE_ID]" -DatasetId "[DATASET_ID]"
